@@ -7,26 +7,26 @@ async function carregarPagina(pagina){
         const resposta = await fetch(pagina);
 
         if(!resposta.ok){
-            throw new Error("Pagina não encontrada")
+            throw new Error("Página não encontrada");
         }
 
         const html = await resposta.text();
 
         document.getElementById("conteudo").innerHTML = html;
 
-    }catch(erro){
+    } catch(erro){
 
-        document.getElementById("conteudo").innerHTML = ´
-         <h2>Erro</h2>
-           <p>não foi possível carregar a página</p>
-           ´;
+        document.getElementById("conteudo").innerHTML = `
+            <h2>Erro</h2>
+            <p>Não foi possível carregar a página.</p>
+        `;
 
-           console.error(erro);
- }     
+        console.error(erro);
     }
+}
 
-    /* Página inicial */
+/* Página inicial */
 
 window.onload = () => {
-    carregarPagina('pages/home.html');
+    carregarPagina("pages/home.html");
 };
