@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111827;
+    color: white;
+}
+
+/* Cabeçalho */
+
+header {
+    background-color: #1d4ed8;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* Menu */
+
+nav {
+    background-color: #0f172a;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #60a5fa;
+}
+
+/* Conteúdo */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+section {
+    background-color: #1e293b;
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+section h2 {
+    color: #60a5fa;
+    margin-bottom: 15px;
+}
+
+section p {
+    color: #d1d5db;
+}
+
+/* Imagens */
+
+img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Listas */
+
+ul {
+    padding-left: 25px;
+}
+
+li {
+    margin: 10px 0;
+    color: #d1d5db;
+}
+
+/* Cards */
+
+.card {
+    background-color: #0f172a;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.card:hover {
+    background-color: #172554;
+}
+
+/* Botões */
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Rodapé */
+
+footer {
+    background-color: #020617;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    color: #94a3b8;
+}
+
+/* Celular */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px;
+    }
+
+    section {
+        padding: 20px;
+    }
+}
