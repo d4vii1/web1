@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Codinome de Herói</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <main class="quadrinho">
+    <span class="selo">HQ</span>
+    <h1>Vire um Herói!</h1>
+    <p class="subtitulo">Digite seu nome e um número para descobrir seu codinome e seu poder</p>
+
+    <div class="formulario">
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" placeholder="Ex: Davi">
+      </div>
+
+      <div class="campo">
+        <label for="numero">Um número (energia inicial)</label>
+        <input type="number" id="numero" placeholder="Ex: 8">
+      </div>
+
+      <button id="botaoGerar">Virar herói!</button>
+    </div>
+
+    <div class="resultado" id="resultado"></div>
+  </main>
+
+  <script src="exempl.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+:root {
+  --amarelo: #ffd23f;
+  --amarelo-claro: #ffe8a3;
+  --vermelho: #e63946;
+  --vermelho-escuro: #b32a35;
+  --azul: #1d3557;
+  --azul-claro: #457b9d;
+  --creme: #fff6e0;
+  --preto: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 16px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.09) 1.6px, transparent 1.6px) 0 0 / 16px 16px,
+    radial-gradient(ellipse at 30% 20%, var(--azul-claro) 0%, var(--azul) 55%, #0f1f38 100%);
+  font-family: 'Inter', sans-serif;
+  color: var(--preto);
+}
+
+.quadrinho {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: var(--creme);
+  border: 5px solid var(--preto);
+  border-radius: 14px;
+  padding: 40px 28px 32px;
+  text-align: center;
+  box-shadow:
+    10px 10px 0 var(--preto),
+    10px 10px 0 3px var(--vermelho);
+}
+
+/* estrela de explosão decorativa atrás do selo */
+.quadrinho::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  left: -34px;
+  width: 84px;
+  height: 84px;
+  background: var(--amarelo);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  z-index: 0;
+}
+
+.selo {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 48px;
+  height: 48px;
+  background: var(--vermelho);
+  color: var(--creme);
+  border: 4px solid var(--preto);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  transform: rotate(-12deg);
+  z-index: 1;
+}
+
+h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 44px;
+  letter-spacing: 1px;
+  margin: 6px 0 10px;
+  color: var(--vermelho);
+  -webkit-text-stroke: 1.5px var(--preto);
+  text-shadow: 3px 3px 0 var(--preto);
+  transform: rotate(-1.5deg);
+}
+
+.subtitulo {
+  font-size: 13.5px;
+  color: #55524b;
+  margin: 0 0 28px;
+  line-height: 1.55;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formulario {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--azul);
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 11px 13px;
+  border: 3px solid var(--preto);
+  border-radius: 8px;
+  background: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  box-shadow: 3px 3px 0 rgba(26, 26, 26, 0.15);
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+input::placeholder {
+  color: #b7b2a5;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--vermelho);
+  box-shadow: 3px 3px 0 var(--amarelo);
+  transform: translate(-1px, -1px);
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  border: 3px solid var(--preto);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--amarelo-claro), var(--amarelo));
+  color: var(--preto);
+  font-family: 'Bangers', cursive;
+  font-size: 21px;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 var(--preto);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--preto);
+  background: linear-gradient(180deg, #fff2c2, var(--amarelo-claro));
+}
+
+button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--preto);
+}
+
+.resultado {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.resultado h2 {
+  font-family: 'Bangers', cursive;
+  font-size: 28px;
+  color: var(--azul);
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 0 rgba(29, 53, 87, 0.15);
+}
+
+.resultado p {
+  margin: 7px 0;
+  font-size: 14px;
+  color: #3a3a3a;
+}
+
+.resultado p strong {
+  color: var(--azul);
+}
+
+.balao {
+  margin-top: 14px;
+  padding: 15px 17px;
+  background: #fff;
+  border: 3px solid var(--preto);
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--preto);
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(230, 57, 70, 0.25);
+}
+
+.balao::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  border-width: 0 10px 14px 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--preto) transparent;
+}
+
+.balao::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 27px;
+  border-width: 0 7px 11px 7px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  z-index: 1;
+}
