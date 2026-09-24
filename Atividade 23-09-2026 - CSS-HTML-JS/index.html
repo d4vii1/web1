@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora & Dicionário</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <main class="painel">
+    <h1>Calculadora & Dicionário</h1>
+
+    <div class="abas">
+      <button class="aba-botao ativo" data-aba="calculadora">Calculadora</button>
+      <button class="aba-botao" data-aba="dicionario">Dicionário</button>
+    </div>
+
+    <section class="aba-conteudo ativo" id="calculadora">
+      <div class="campo">
+        <label for="numeroA">Primeiro número</label>
+        <input type="number" id="numeroA" placeholder="Ex: 10">
+      </div>
+
+      <div class="campo">
+        <label for="numeroB">Segundo número</label>
+        <input type="number" id="numeroB" placeholder="Ex: 4">
+      </div>
+
+      <div class="campo">
+        <label for="operacao">Operação</label>
+        <select id="operacao">
+          <option value="soma">Soma (+)</option>
+          <option value="subtracao">Subtração (-)</option>
+          <option value="multiplicacao">Multiplicação (×)</option>
+          <option value="divisao">Divisão (÷)</option>
+        </select>
+      </div>
+
+      <button id="botaoCalcular" class="botao-acao">Calcular</button>
+
+      <div class="resultado" id="resultadoCalculadora"></div>
+    </section>
+
+    <section class="aba-conteudo" id="dicionario">
+      <div class="campo">
+        <label for="palavra">Palavra</label>
+        <input type="text" id="palavra" placeholder="Ex: javascript, html, css...">
+      </div>
+
+      <button id="botaoBuscar" class="botao-acao">Buscar significado</button>
+
+      <div class="resultado" id="resultadoDicionario"></div>
+    </section>
+  </main>
+
+  <script src="exempl.js"></script>
+</body>
+</html>
