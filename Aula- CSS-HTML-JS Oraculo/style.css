@@ -1,0 +1,361 @@
+:root {
+  --bg: #07030c;
+  --bg-card: #150a24;
+  --roxo: #5b21b6;
+  --roxo-claro: #9d5cff;
+  --sangue: #8b1e3f;
+  --sangue-claro: #d94f6e;
+  --dourado: #c9a84c;
+  --texto: #e8def8;
+  --texto-fraco: #7c6a9c;
+  --erro: #e0708a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 15%, #1c0f33 0%, var(--bg) 45%, #030106 100%);
+  background-attachment: fixed;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--texto);
+  animation: tremular 6s infinite;
+}
+
+/* tremor de vela: brilho da tela oscila de forma irregular */
+@keyframes tremular {
+  0%, 100% { filter: brightness(1); }
+  4%       { filter: brightness(0.93); }
+  6%       { filter: brightness(1.04); }
+  22%      { filter: brightness(0.9); }
+  24%      { filter: brightness(1); }
+  55%      { filter: brightness(0.95); }
+  58%      { filter: brightness(1.06); }
+  78%      { filter: brightness(0.88); }
+  80%      { filter: brightness(1); }
+}
+
+/* vinheta: as bordas escurecem como um túnel, fechando ao redor do conteúdo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 32%, rgba(0, 0, 0, 0.55) 75%, rgba(0, 0, 0, 0.92) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* flash de susto: fica transparente e só aparece quando o JS liga a classe */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(178, 20, 20, 0);
+  pointer-events: none;
+  z-index: 6;
+  transition: background 0.06s ease-out;
+}
+
+body.flash::after {
+  background: rgba(178, 20, 20, 0.4);
+}
+
+#fumaca {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.oraculo {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.olho {
+  display: inline-block;
+  font-size: 34px;
+  color: var(--sangue-claro);
+  margin-bottom: 8px;
+  text-shadow:
+    0 0 10px rgba(217, 79, 110, 0.9),
+    0 0 26px rgba(217, 79, 110, 0.5);
+  animation: piscar 5s infinite;
+}
+
+/* olho que "pisca" de forma abrupta e irregular, como se algo notasse você */
+@keyframes piscar {
+  0%, 92%, 100% { opacity: 0.8; transform: scale(1); }
+  94%           { opacity: 0.1; transform: scaleY(0.15); }
+  96%           { opacity: 0.85; transform: scale(1.1); }
+  97%           { opacity: 0.1; transform: scaleY(0.15); }
+  98%           { opacity: 0.8; transform: scale(1); }
+}
+
+h1 {
+  position: relative;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 34px;
+  margin: 0 0 8px;
+  letter-spacing: 1.5px;
+  color: #f2ecff;
+  text-shadow:
+    0 0 6px rgba(157, 92, 255, 0.6),
+    0 0 22px rgba(91, 33, 182, 0.5);
+}
+
+/* efeito glitch: cópias do texto em vermelho/azul que se deslocam por instantes */
+h1::before,
+h1::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+}
+
+h1::before {
+  color: #ff2b4a;
+  animation: glitch-1 6.5s infinite;
+  z-index: -1;
+}
+
+h1::after {
+  color: #4fd6ff;
+  animation: glitch-2 8s infinite;
+  z-index: -1;
+}
+
+@keyframes glitch-1 {
+  0%, 91%, 100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); opacity: 0; }
+  92%           { clip-path: inset(15% 0 55% 0); transform: translate(-3px, -2px); opacity: 0.75; }
+  93%           { clip-path: inset(60% 0 5% 0); transform: translate(3px, 1px); opacity: 0.75; }
+  94%           { clip-path: inset(5% 0 70% 0); transform: translate(-2px, 2px); opacity: 0.75; }
+  95%           { opacity: 0; }
+}
+
+@keyframes glitch-2 {
+  0%, 44%, 100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); opacity: 0; }
+  45%           { clip-path: inset(70% 0 5% 0); transform: translate(3px, -1px); opacity: 0.6; }
+  46%           { clip-path: inset(10% 0 65% 0); transform: translate(-3px, 2px); opacity: 0.6; }
+  47%           { opacity: 0; }
+}
+
+.subtitulo {
+  color: var(--texto-fraco);
+  font-size: 13.5px;
+  font-style: italic;
+  margin: 0 0 32px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+.formulario {
+  background: linear-gradient(180deg, rgba(21, 10, 36, 0.95), rgba(10, 5, 17, 0.95));
+  border: 1px solid rgba(157, 92, 255, 0.25);
+  outline: 1px solid rgba(139, 30, 63, 0.25);
+  outline-offset: 4px;
+  border-radius: 4px;
+  padding: 26px 24px;
+  text-align: left;
+  margin-bottom: 20px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 20px 45px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(91, 33, 182, 0.08);
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo:last-of-type {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-fraco);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #08040f;
+  border: 1px solid rgba(157, 92, 255, 0.25);
+  border-radius: 3px;
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input::placeholder {
+  color: #4d3f6b;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--sangue-claro);
+  box-shadow: 0 0 0 3px rgba(139, 30, 63, 0.25);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid rgba(157, 92, 255, 0.4);
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--sangue), #2d1354 85%);
+  color: #f2ecff;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+  animation: respirar 3.5s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%, 100% { box-shadow: 0 0 12px rgba(139, 30, 63, 0.35); }
+  50%      { box-shadow: 0 0 26px rgba(157, 92, 255, 0.5); }
+}
+
+button:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.terminal {
+  background: #050208;
+  border: 1px solid rgba(139, 30, 63, 0.35);
+  border-radius: 4px;
+  padding: 14px 16px;
+  height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 12.5px;
+  line-height: 1.75;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+}
+
+.terminal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: rgba(157, 92, 255, 0.35);
+  border-radius: 3px;
+}
+
+.linha-terminal {
+  margin: 0;
+  color: var(--roxo-claro);
+  text-shadow: 0 0 6px rgba(157, 92, 255, 0.35);
+  animation: surgir 0.35s ease;
+}
+
+.linha-aguardando {
+  color: var(--texto-fraco);
+  font-style: italic;
+}
+
+.linha-erro {
+  color: var(--erro);
+  text-shadow: 0 0 8px rgba(224, 112, 138, 0.5);
+}
+
+.linha-sussurro {
+  color: var(--sangue-claro);
+  font-style: italic;
+  opacity: 0.85;
+}
+
+@keyframes surgir {
+  0%   { opacity: 0; transform: translateY(3px) translateX(0); letter-spacing: 2px; }
+  40%  { transform: translateY(0) translateX(-1px); }
+  70%  { transform: translateX(1px); }
+  100% { opacity: 1; transform: translateY(0) translateX(0); letter-spacing: normal; }
+}
+
+.resultado {
+  margin-top: 22px;
+  text-align: left;
+}
+
+.resultado h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  color: var(--dourado);
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
+}
+
+.resultado p {
+  margin: 6px 0;
+  font-size: 13.5px;
+  color: var(--texto);
+}
+
+.frase-destino {
+  margin-top: 14px;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(21, 10, 36, 0.9), rgba(10, 5, 17, 0.9));
+  border-left: 3px solid var(--sangue-claro);
+  border-radius: 2px;
+  font-style: italic;
+  color: var(--roxo-claro);
+  box-shadow: inset 0 0 20px rgba(139, 30, 63, 0.15);
+}
+
+.bonus {
+  display: block;
+  margin-top: 10px;
+  color: var(--dourado);
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+}
+
+.rodape {
+  margin-top: 30px;
+  font-size: 13.5px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.8px;
+  color: var(--dourado);
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.4);
+}
