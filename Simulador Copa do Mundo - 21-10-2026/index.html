@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Copa do Mundo </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <h1>Super Copa do Mundo</h1>
+    <p class="sub">O maior campeonato do mundo</p>
+
+    <!-- Painel que mostra quantas voltas cada laço deu -->
+    <div class="painel" aria-label="Voltas de cada laço">
+      <div class="volta amarelo"><strong id="contFor">0</strong><span>voltas do for</span></div>
+      <div class="volta azul"><strong id="contWhile">0</strong><span>voltas do while</span></div>
+      <div class="volta vermelho"><strong id="contDo">0</strong><span>voltas do do...while</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ETAPA 1: -->
+    <section class="etapa amarelo">
+      <h2><code>/ Sorteio das seleções</h2>
+      <p>Sabemos quantas seleções queremos, então o <code></code> repete exatamente essa quantidade de vezes.</p>
+
+      <label for="qtdTimes">Quantas seleções participam? (2 a 8)</label>
+      <div class="linha">
+        <input type="number" id="qtdTimes" value="4" min="2" max="8">
+        <button id="btnSortear" type="button">Sortear seleções</button>
+      </div>
+      <p id="msg1" class="msg" role="status"></p>
+
+      <div id="times" class="grade"></div>
+    </section>
+
+    <!-- ETAPA 2: -->
+    <section class="etapa azul">
+      <h2><code></code> Partida de 90 minutos</h2>
+      <p>Não sabemos quantos lances vão acontecer <code>while</code> segue enquanto o relógio estiver abaixo de 90 minutos.</p>
+
+      <div id="confronto2" class="confronto"></div>
+      <button id="btnJogar" type="button" disabled>Apitar o jogo</button>
+
+      <div id="placar" class="placar" aria-live="polite"></div>
+      <ul id="lances" class="lances"></ul>
+      <p id="resumo" class="resumo"></p>
+    </section>
+
+    <!-- ETAPA 3: -->
+    <section class="etapa vermelho">
+      <h2><code></code> Disputa de pênaltis</h2>
+      <p>Toda disputa tem pelo menos uma cobrança. O <code></code> cobra primeiro e só depois verifica se já tem vencedor.</p>
+
+      <div id="confronto3" class="confronto"></div>
+      <button id="btnPenaltis" type="button" disabled>Ir para os pênaltis</button>
+
+      <div id="penaltis" class="penaltis" aria-live="polite"></div>
+      <p id="resumoPenaltis" class="resumo"></p>
+    </section>
+  </main>
+
+  <footer>Feito por Davi Dias e Miguel Prado.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
